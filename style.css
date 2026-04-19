@@ -6,7 +6,8 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #134e5e);
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('https://images.unsplash.com/photo-1564182842519-8a3b2af3e228?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
     height: 100vh;
