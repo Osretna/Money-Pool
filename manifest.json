@@ -1,0 +1,22 @@
+{
+  "name": "نظام إدارة الجمعيات الاحترافي",
+  "short_name": "الجمعية",
+  "description": "تطبيق لادارة الجمعيات والتحصيل المالي",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0f2027",
+  "theme_color": "#2c5364",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام الجمعيات الذكي</title>
+    <link rel="icon" type="image/png" href="https://images.pexels.com/photos/6590645/pexels-photo-6590645.jpeg">
+    <!-- للأيفون -->
+    <link rel="apple-touch-icon" href="https://images.pexels.com/photos/6590645/pexels-photo-6590645.jpeg">
+    <!-- لون شريط الحالة في الموبايل -->
+    <meta name="theme-color" content="#2c5364">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <!-- تحميل مكتبات فيربيس (الإصدار 8 المتوافق مع الكود السابق) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <!-- مكتبة Excel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Service Worker Registered'))
+                    .catch(err => console.log('Service Worker Failed', err));
+            });
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="glass-container">
+        <!-- القائمة الجانبية -->
+        <nav class="sidebar" id="sidebar">
+            <h2 onclick="showSection('home')">جمعيتي 📱</h2>
+            <ul>
+                <li onclick="showSection('home')">🏠 الرئيسية</li>
+                <li onclick="showSection('add-new')">➕ جمعية جديدة</li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <!-- 1. الصفحة الرئيسية: عرض الجمعيات -->
+            <section id="home" class="page active">
+                <h1>الجمعيات الحالية</h1>
+                <div id="assoc-grid" class="grid-container">
+                    <!-- الكروت ستظهر هنا عبر JS -->
+                </div>
+            </section>
+
+            <!-- 2. صفحة إضافة جمعية جديدة -->
+            <section id="add-new" class="page">
+                <h1>إنشاء جمعية جديدة</h1>
+                <div class="glass-card">
+                    <input type="text" id="nameInp" placeholder="اسم الجمعية">
+                    <input type="number" id="amountInp" placeholder="المبلغ الشهري للفرد">
+                    <input type="number" id="monthsInp" placeholder="عدد الشهور">
+                    <input type="date" id="dateInp" title="تاريخ البدء">
+                    <button onclick="createNewAssoc()">حفظ ونشر</button>
+                </div>
+            </section>
+
+            <!-- 3. صفحة إدارة جمعية محددة (تظهر عند الضغط على كرت) -->
+            <section id="manage-single" class="page">
+                <button class="back-btn" onclick="showSection('home')">⬅ عودة</button>
+                <h1 id="selected-assoc-title">اسم الجمعية</h1>
+                <div class="info-bar">
+                    <span id="total-pool">إجمالي القبض: 0</span>
+                    <button class="export-btn" onclick="exportData()">📥 تصدير إكسيل</button>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 5%;">#</th>
+                                <th style="width: 20%;">الاسم</th>
+                                <th style="width: 15%;">شهر الاستحقاق</th>
+                                <th style="width: 20%;">المبلغ الشهري / الإجمالي</th> <!-- التعديل هنا -->
+                                <th style="width: 15%;">موعد التحصيل/القبض</th>
+                                <th style="width: 10%;">ترتيب يدوي</th>
+                                <th style="width: 15%;">الحالة</th>
+                                <th style="width: 15%;">عمليات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="members-table-body">
+                            <!-- البيانات ستنزل هنا ومحاذاتها ستكون مضبوطة -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="add-member-form">
+                    <input type="text" id="memberName" placeholder="اسم المشترك الجديد">
+                    <button onclick="addMember()">إضافة مشترك</button>
+                </div>
+
+                <!-- داخل قسم manage-single -->
+                <div class="actions-bar">
+                    <button class="shuffle-btn" onclick="runLottery()">🎲 إجراء قرعة عشوائية</button>
+                    <button class="export-btn" onclick="exportData()">📥 تصدير إكسيل</button>
+                </div>
+
+
+            </section>
+        </main>
+    </div>
+
+    <!-- كود الفيربيس (ضعه هنا) -->
+    <script src="app.js"></script>
+</body>
+
+</html>
