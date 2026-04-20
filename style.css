@@ -1,6 +1,7 @@
 :root {
     --glass: rgba(255, 255, 255, 0.15);
     --border: rgba(255, 255, 255, 0.2);
+    --accent: #2ecc71;
 }
 
 body {
@@ -17,15 +18,21 @@ body {
 
 .glass-container {
     display: flex;
+    flex-direction: row;
+    width: 100%;
     height: 100vh;
     backdrop-filter: blur(10px);
 }
 
 .sidebar {
-    width: 200px;
-    background: rgba(0,0,0,0.3);
+    width: 260px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(20px);
     border-left: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
     padding: 20px;
+    z-index: 1000;
 }
 
 .sidebar li {
@@ -38,7 +45,7 @@ body {
 
 .sidebar li:hover { background: var(--glass); }
 
-.content { flex: 1; padding: 20px; overflow-y: auto; }
+.content { flex: 1; padding: 20px; overflow-y: auto;  padding-bottom: 80px; /* لترك مساحة للقائمة السفلية في الموبايل */}
 
 .page { display: none; }
 .page.active { display: block; }
@@ -90,6 +97,8 @@ button {
 .table-container {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
+    width: 100%;
+    overflow-x: auto; /* يسمح بالسحب يميناً ويساراً في الموبايل */
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 10px;
@@ -100,6 +109,7 @@ table {
     border-collapse: collapse;
     margin-top: 10px;
     table-layout: fixed; /* هذا السطر يضمن ثبات عرض الأعمدة */
+    min-width: 700px; /* يمنع انضغاط الكلام ويجعل الجدول قابل للسحب */
 }
 
 /* صندوق مبلغ القبض */
@@ -140,6 +150,8 @@ table {
     cursor: pointer;
     margin: 0 2px;
     transition: 0.3s;
+    padding: 10px; /* تكبير حجم الأزرار ليسهل الضغط عليها بالإصبع */
+    font-size: 1.2rem;
 }
 
 .op-btn.edit:hover { background: #3498db; }
@@ -179,6 +191,64 @@ thead th {
     }
     table {
         min-width: 800px; /* ضمان عدم انضغاط الجدول في الشاشات الصغيرة */
+    }
+    .glass-container {
+        flex-direction: column; /* تحويل الترتيب من أفقي لرأسي */
+        }
+        .sidebar {
+        width: 100%;
+        height: 65px;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 0;
+        position: fixed;
+        bottom: 0; /* تثبيت القائمة في الأسفل مثل التطبيقات */
+        border-left: none;
+        border-top: 1px solid var(--border);
+        background: rgba(0, 0, 0, 0.8);
+    }
+
+    .sidebar h2 {
+        display: none; /* إخفاء اسم التطبيق في القائمة السفلية */
+    }
+
+    .sidebar ul {
+        display: flex;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        justify-content: space-around;
+    }
+
+    .sidebar li {
+        padding: 10px;
+        margin: 0;
+        font-size: 0.8rem;
+        text-align: center;
+        flex: 1;
+    }
+
+    .content {
+        padding: 15px;
+    }
+
+    h1 { font-size: 1.5rem; }
+
+    /* تحسين شكل المدخلات في الموبايل */
+    input {
+        font-size: 16px !important; /* يمنع عمل Zoom تلقائي في الأيفون */
+        padding: 15px;
+    }
+
+    .actions-bar {
+        display: flex;
+        flex-wrap: wrap; /* جعل الأزرار تنزل تحت بعضها لو المساحة صغيرة */
+        gap: 10px;
+    }
+
+    .actions-bar button {
+        flex: 1;
+        min-width: 140px;
     }
 }
 @keyframes gradientBG {
