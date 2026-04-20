@@ -1,12 +1,23 @@
-const cacheName = 'jamaiya-v1';
-const assets = ['./', './index.html', './style.css', './app.js', './logo.png'];
+const cacheName = 'jamaiya-v2';
+const assets = [
+  './',
+  './index.html',
+  './style.css',
+  './app.js'
+];
 
-// تثبيت التطبيق وتخزين الملفات للعمل بدون انترنت
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(cacheName).then(cache => cache.addAll(assets)));
+  e.waitUntil(
+    caches.open(cacheName).then(cache => {
+      return cache.addAll(assets);
+    })
+  );
 });
 
-// تشغيل التطبيق من الكاش
 self.addEventListener('fetch', e => {
-  e.respondWith(caches.match(e.request).then(res => res || fetch(e.request)));
+  e.respondWith(
+    fetch(e.request).catch(() => {
+      return caches.match(e.request);
+    })
+  );
 });
