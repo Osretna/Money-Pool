@@ -1,22 +1,23 @@
 {
-  "name": "بيت الزكاة",
-  "short_name": "الزكاة",
-  "description": "نظام ذكي لجمعية بيت الزكاة",
-  "id": "family.zakat.house.app",
+  "name": "نظام إدارة الجمعيات الاحترافي",
+  "short_name": "الجمعية",
+  "description": "نظام ذكي لإدارة الجمعيات المالية، تتبع المبالغ، التحصيل، ومواعيد القبض.",
+  "id": "com.jamaiya.system.app",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#0f2027",
   "theme_color": "#2c5364",
   "orientation": "portrait",
+  "categories": ["finance", "utilities"],
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/2953/2953363.png",
+      "src": "https://cdn-icons-png.flaticon.com/512/2845/2845892.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/2953/2953363.png",
+      "src": "https://cdn-icons-png.flaticon.com/512/2845/2845892.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
@@ -24,10 +25,11 @@
   ],
   "screenshots": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/2953/2953363.png",
+      "src": "https://cdn-icons-png.flaticon.com/512/2845/2845892.png",
       "sizes": "512x512",
       "type": "image/png",
-      "form_factor": "wide"
+      "form_factor": "wide",
+      "label": "واجهة الجمعية"
     }
   ]
 }
