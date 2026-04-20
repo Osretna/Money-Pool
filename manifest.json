@@ -1,8 +1,7 @@
 {
-  "name": "نظام إدارة الجمعيات الاحترافي",
+  "name": "نظام الجمعية الاحترافي",
   "short_name": "الجمعية",
-  "description": "تطبيق لادارة الجمعيات والتحصيل المالي",
-  "start_url": "index.html",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#0f2027",
   "theme_color": "#2c5364",
@@ -11,7 +10,8 @@
     {
       "src": "logo.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "logo.png",
