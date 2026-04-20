@@ -92,13 +92,12 @@
                 </div>
                 <div class="add-member-form">
                     <input type="text" id="memberName" placeholder="اسم المشترك الجديد">
-                    <button onclick="addMember()">إضافة مشترك</button>
-                </div>
-
-                <!-- داخل قسم manage-single -->
-                <div class="actions-bar">
-                    <button class="shuffle-btn" onclick="runLottery()">🎲 إجراء قرعة عشوائية</button>
-                    <button class="export-btn" onclick="exportData()">📥 تصدير إكسيل</button>
+                    <div class="actions-bar">
+                        <button onclick="addMember()" style="background:#27ae60;">➕ إضافة مشترك</button>
+                        <button onclick="exportData()" style="background:#16a085;">📥 تصدير إكسيل</button>
+                        <button class="shuffle-btn" onclick="runLottery()" style="background:#f1c40f; color:#000;">🎲
+                            إجراء قرعة عشوائية</button>
+                    </div>
                 </div>
 
 

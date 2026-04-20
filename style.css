@@ -45,7 +45,18 @@ body {
 
 .sidebar li:hover { background: var(--glass); }
 
-.content { flex: 1; padding: 20px; overflow-y: auto;  padding-bottom: 80px; /* لترك مساحة للقائمة السفلية في الموبايل */}
+.content { flex: 1; padding: 20px;  padding-bottom: 150px !important; /* لترك مساحة للقائمة السفلية في الموبايل */; /* هذا السطر هو الأهم: يسمح بمرونة السحب في الموبايل */
+    overflow-y: scroll; 
+    -webkit-overflow-scrolling: touch; /* يجعل السحب ناعماً في هواتف الأيفون */}
+
+    /* تعديل شكل قسم إضافة مشترك ليكون واضحاً في الموبايل */
+.add-member-form {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.08); /* خلفية خفيفة لتمييز المنطقة */
+    border-radius: 15px;
+    border: 1px solid var(--border);
+}
 
 .page { display: none; }
 .page.active { display: block; }
@@ -244,11 +255,16 @@ thead th {
         display: flex;
         flex-wrap: wrap; /* جعل الأزرار تنزل تحت بعضها لو المساحة صغيرة */
         gap: 10px;
+        margin-top: 15px;
     }
 
     .actions-bar button {
         flex: 1;
         min-width: 140px;
+    }
+    .actions-bar button {
+        width: 100%; /* جعل الأزرار بعرض الشاشة في الموبايل ليسهل الضغط عليها */
+        margin-bottom: 5px;
     }
 }
 @keyframes gradientBG {
